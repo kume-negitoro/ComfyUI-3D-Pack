@@ -189,6 +189,19 @@ class Inference2D_API:
         torch.cuda.empty_cache()
         return out
 
+    def free_resources(self):
+        self.tokenizer = None
+        self.validation_pipeline.vae = None
+        self.validation_pipeline.text_encoder = None
+        self.validation_pipeline.tokenizer = None
+        self.validation_pipeline.unet = None
+        self.validation_pipeline.ref_unet = None
+        self.validation_pipeline.feature_extractor = None
+        self.validation_pipeline.image_encoder = None
+        self.validation_pipeline.scheduler = None
+
+        torch.cuda.empty_cache()
+
 class Inference3D_API:
 
     def __init__(self, checkpoint_root_path, cfg, device="cuda"):

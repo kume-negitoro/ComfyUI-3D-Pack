@@ -2940,6 +2940,8 @@ class CharacterGen_MVDiffusion_Model:
 
         orbit_camposes = [azimuths, elevations, radius, center, center, center]
 
+        character_mv_gen_pipe.free_resources()
+
         return (multiview_images, orbit_camposes)
     
 class Load_CharacterGen_Reconstruction_Model:
